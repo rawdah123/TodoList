@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body>
+    <header><h1>Welcome to your page of Todos!</h1></header>
+    <div> <hr>
+        <h2> <ul>
+            <% todo.map((todo,index) =>{  %>
+                <li id ='todo'><%=`${todo.title}` %> </li>
+                <form method ="post" action="/todo/<%=todo.id%>?_method=DELETE">
+                <button type="submit" id="<%= index %>" >Delete</button>
+            </form>
+            <form method ="get" action="/update/<%=todo.id%>?_method=PUT">
+            
+                <button type="submit" id="<%= index %>">Update</button>
+            </form>
+
+               <% }) %> 
+            </ul>
+        </h2>
+        <hr>
+        <h2>Enter your new Todo!</h2>
+            <form method="post" action="/addTitle">
+                <input name = "todoTitle" placeholder="Enter Todo" id="todoInput">
+                <button name = 'submit' id="submit">Submit</button>
+            </form>
+
+        
+    </div>
+
+</body>
+</html>
